@@ -149,7 +149,6 @@ class ServerlessAWSDocumentation {
     console.log('_____________________________________________________________');
     console.log('_____________________________________________________________');
     console.log('_____________________________________________________________');
-    console.log(JSON.stringify(this.serverless), 'Checking serverless variable');
     console.log(JSON.stringify(this.serverless.service.provider), 'Checking provider variable');
     console.log(JSON.stringify(this.serverless.service.provider.apiGateway), 'Checking povider variable');
     console.log('_____________________________________________________________');
