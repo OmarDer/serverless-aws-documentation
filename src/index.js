@@ -146,12 +146,20 @@ class ServerlessAWSDocumentation {
     let restApiId = {
       Ref: 'ApiGatewayRestApi',
     };
-
+    console.log('_____________________________________________________________');
+    console.log('_____________________________________________________________');
+    console.log('_____________________________________________________________');
+    console.log(JSON.stringify(this.serverless), 'Checking serverless variable');
+    console.log(JSON.stringify(this.serverless.service.provider), 'Checking provider variable');
+    console.log(JSON.stringify(this.serverless.service.provider.apiGateway), 'Checking povider variable');
+    console.log('_____________________________________________________________');
+    console.log('_____________________________________________________________');
+    console.log('_____________________________________________________________');
     // Use the provider API gateway if one has been provided.
     if (this.serverless.service.provider.apiGateway && this.serverless.service.provider.apiGateway.restApiId) {
       restApiId = this.serverless.service.provider.apiGateway.restApiId
     }
-
+    console.log(restApiId, 'restApiId after checking for existing api');
     if (this.customVars.documentation.models) {
       const cfModelCreator = this.createCfModel(restApiId);
 
