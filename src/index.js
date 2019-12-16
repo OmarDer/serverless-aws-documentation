@@ -146,6 +146,7 @@ class ServerlessAWSDocumentation {
     let restApiId = {
       Ref: 'ApiGatewayRestApi',
     };
+    console.log('_______Testing______');
     console.log('_____________________________________________________________');
     console.log('_____________________________________________________________');
     console.log('_____________________________________________________________');
