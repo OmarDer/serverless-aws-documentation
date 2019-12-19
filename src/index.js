@@ -115,7 +115,8 @@ class ServerlessAWSDocumentation {
                 }
 
                 if ( method.responses ) {
-                  methodDoc['methodResponses'] = []
+                  methodDoc['methodResponses'] = [];
+                  console.log(methodResponses, '_________________RESPONSES______________________');
                   Object.keys(method.responses).map(statusCode => {
                     const response = method.responses[statusCode];
                     const methodResponse = {
@@ -127,6 +128,7 @@ class ServerlessAWSDocumentation {
                       responseModels['application/json'] =
                         this.extractModel(response, this.customVars.documentation.models);
                       methodResponse['responseModels'] = responseModels;
+                      console.log(responseModels, "__________________________RESPONSE MODELS__________________");
                     }
                     methodDoc['methodResponses'].push(methodResponse);
                   });
@@ -146,15 +148,7 @@ class ServerlessAWSDocumentation {
     let restApiId = {
       Ref: 'ApiGatewayRestApi',
     };
-    console.log('_______Testing______');
-    console.log('_____________________________________________________________');
-    console.log('_____________________________________________________________');
-    console.log('_____________________________________________________________');
-    console.log(JSON.stringify(this.serverless.service.provider), 'Checking provider variable');
-    console.log(JSON.stringify(this.serverless.service.provider.apiGateway), 'Checking povider variable');
-    console.log('_____________________________________________________________');
-    console.log('_____________________________________________________________');
-    console.log('_____________________________________________________________');
+  
     // Use the provider API gateway if one has been provided.
     if (this.serverless.service.provider.apiGateway && this.serverless.service.provider.apiGateway.restApiId) {
       restApiId = this.serverless.service.provider.apiGateway.restApiId
@@ -169,6 +163,7 @@ class ServerlessAWSDocumentation {
           modelObj[`${model.Properties.Name}Model`] = model;
           return modelObj;
         }, {});
+      console.log(models, "____________________________________MODELS_____________________________________________");
       Object.assign(this.cfTemplate.Resources, models);
     }
 
